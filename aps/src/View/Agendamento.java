@@ -27,92 +27,124 @@ public class Agendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button1 = new java.awt.Button();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tabela = new javax.swing.JTable();
+        Button = new java.awt.Button();
+        SelectTipo = new javax.swing.JComboBox<>();
+        SelectCliente = new javax.swing.JComboBox<>();
+        InputData = new javax.swing.JFormattedTextField();
+        TxtObservacao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        InputObservacao = new javax.swing.JTextArea();
+        TxtHorario = new javax.swing.JLabel();
+        InputHorario = new javax.swing.JTextField();
+        TxtData = new javax.swing.JLabel();
+        InputValor = new javax.swing.JTextField();
+        TxtValor = new javax.swing.JLabel();
+        TxtTipo = new javax.swing.JLabel();
+        TxtCliente = new javax.swing.JLabel();
+        TxtNome = new javax.swing.JLabel();
+        InputNome = new javax.swing.JTextField();
+        FundoSecundario = new javax.swing.JLabel();
+        FundoPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        button1.setBackground(new java.awt.Color(51, 154, 139));
-        button1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        button1.setForeground(new java.awt.Color(255, 255, 255));
-        button1.setLabel("Agendar Locação");
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 1040, 40));
+        Tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nome", "Cliente", "Valor", "Data", "Horário"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 390, 30));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 390, 30));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(Tabela);
 
-        jFormattedTextField1.setToolTipText("");
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 390, 30));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, 1040, 230));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Observações:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, -1, -1));
+        Button.setBackground(new java.awt.Color(51, 154, 139));
+        Button.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        Button.setForeground(new java.awt.Color(255, 255, 255));
+        Button.setLabel("Agendar Locação");
+        getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 1040, 40));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        SelectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(SelectTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 390, 30));
+
+        SelectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(SelectCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 390, 30));
+
+        InputData.setToolTipText("");
+        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 390, 30));
+
+        TxtObservacao.setBackground(new java.awt.Color(255, 255, 255));
+        TxtObservacao.setForeground(new java.awt.Color(255, 255, 255));
+        TxtObservacao.setText("Observações:");
+        getContentPane().add(TxtObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, -1, -1));
+
+        InputObservacao.setColumns(20);
+        InputObservacao.setRows(5);
+        jScrollPane1.setViewportView(InputObservacao);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, 400, 110));
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Horário:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 390, 30));
+        TxtHorario.setBackground(new java.awt.Color(255, 255, 255));
+        TxtHorario.setForeground(new java.awt.Color(255, 255, 255));
+        TxtHorario.setText("Horário:");
+        getContentPane().add(TxtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
+        getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 390, 30));
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Data:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 390, 30));
+        TxtData.setBackground(new java.awt.Color(255, 255, 255));
+        TxtData.setForeground(new java.awt.Color(255, 255, 255));
+        TxtData.setText("Data:");
+        getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
+        getContentPane().add(InputValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 390, 30));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Valor (R$):");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
+        TxtValor.setBackground(new java.awt.Color(255, 255, 255));
+        TxtValor.setForeground(new java.awt.Color(255, 255, 255));
+        TxtValor.setText("Valor (R$):");
+        getContentPane().add(TxtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Tipo quadra:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        TxtTipo.setBackground(new java.awt.Color(255, 255, 255));
+        TxtTipo.setForeground(new java.awt.Color(255, 255, 255));
+        TxtTipo.setText("Tipo quadra:");
+        getContentPane().add(TxtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Cliente:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        TxtCliente.setBackground(new java.awt.Color(255, 255, 255));
+        TxtCliente.setForeground(new java.awt.Color(255, 255, 255));
+        TxtCliente.setText("Cliente:");
+        getContentPane().add(TxtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nome:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 390, 30));
+        TxtNome.setBackground(new java.awt.Color(255, 255, 255));
+        TxtNome.setForeground(new java.awt.Color(255, 255, 255));
+        TxtNome.setText("Nome:");
+        getContentPane().add(TxtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        getContentPane().add(InputNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 390, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/Agenda-PainelFundo.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, -1));
+        FundoSecundario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/Agenda-PainelFundo.png"))); // NOI18N
+        getContentPane().add(FundoSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/AgendaFundo.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        FundoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/AgendaFundo.jpg"))); // NOI18N
+        getContentPane().add(FundoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,23 +186,25 @@ public class Agendamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private java.awt.Button Button;
+    private javax.swing.JLabel FundoPrincipal;
+    private javax.swing.JLabel FundoSecundario;
+    private javax.swing.JFormattedTextField InputData;
+    private javax.swing.JTextField InputHorario;
+    private javax.swing.JTextField InputNome;
+    private javax.swing.JTextArea InputObservacao;
+    private javax.swing.JTextField InputValor;
+    private javax.swing.JComboBox<String> SelectCliente;
+    private javax.swing.JComboBox<String> SelectTipo;
+    private javax.swing.JTable Tabela;
+    private javax.swing.JLabel TxtCliente;
+    private javax.swing.JLabel TxtData;
+    private javax.swing.JLabel TxtHorario;
+    private javax.swing.JLabel TxtNome;
+    private javax.swing.JLabel TxtObservacao;
+    private javax.swing.JLabel TxtTipo;
+    private javax.swing.JLabel TxtValor;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
