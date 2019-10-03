@@ -11,43 +11,20 @@ import java.util.Date;
  *
  * @author Dinopc
  */
-public class Usuario {
+public class Usuario extends Pessoa{
     
-    private int id;
-    private String nome;
-    private String senha;
-    private String nivelAcesso;
-    private char sexo;
-    private Date dataNascimento;
-    private String telefone;
-    private String email;
-    private String Rg;
+    protected String senha;
+    protected String nivelAcesso;
 
-    public Usuario(int id, String nome, String senha, String nivelAcesso, char sexo, Date dataNascimento, String telefone, String email, String Rg) {
-        this.id = id;
-        this.nome = nome;
+    public Usuario(int id, String nome, String senha) {
+        super(id, nome);
+        this.senha = senha;
+    }
+
+    public Usuario(String senha, String nivelAcesso, int id, String nome, char sexo, Date dataNascimento, String email, String Rg) {
+        super(id, nome, sexo, dataNascimento, email, Rg);
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-        this.email = email;
-        this.Rg = Rg;
-    }
-
-    public Usuario(int id, String nome, String senha, String nivelAcesso) {
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-        this.nivelAcesso = nivelAcesso;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getSenha() {
@@ -65,48 +42,4 @@ public class Usuario {
     public void setNivelAcesso(String nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
-
-    public char getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRg() {
-        return Rg;
-    }
-
-    public void setRg(String Rg) {
-        this.Rg = Rg;
-    }
-    
-    
-    
-    
 }

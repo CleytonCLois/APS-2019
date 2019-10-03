@@ -9,96 +9,24 @@ import java.util.Date;
 
 /**
  *
- * @author Dinopc
+ * herda de pessoa e faz constructor da superclasse passando os parametros 
+ * definidos no cód abaixo
  */
 
-public class Cliente {
-    
-    private int id;
-    private String nome;
-    private char sexo;
-    private Date dataNascimento;
-    private String telefone;
-    private String email;
-    private String Rg;
+public class Cliente extends Pessoa{
     private String endereco;
     private String Cep;
 
-    public Cliente(int id, String nome, char sexo, Date dataNascimento, String telefone, String email, String Rg, String endereco, String Cep) {
-        this.id = id;
-        this.nome = nome;
-        this.sexo = sexo;
-        this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-        this.email = email;
-        this.Rg = Rg;
+    public Cliente(String endereco, String Cep, int id, String nome, char sexo, Date dataNascimento, String email, String Rg) {
+        super(id, nome, sexo, dataNascimento, email, Rg);
         this.endereco = endereco;
         this.Cep = Cep;
     }
 
-    public Cliente(int id, String nome, String telefone, String email, String Rg, String endereco) {
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.Rg = Rg;
+    public Cliente(String endereco, String Cep, int id, String nome) {
+        super(id, nome);
         this.endereco = endereco;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public char getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(char sexo) {
-        this.sexo = sexo;
-    }
-
-    public Date getData() {
-        return dataNascimento;
-    }
-
-    public void setData(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRg() {
-        return Rg;
-    }
-
-    public void setRg(String Rg) {
-        this.Rg = Rg;
+        this.Cep = Cep;
     }
 
     public String getEndereco() {
@@ -116,5 +44,4 @@ public class Cliente {
     public void setCep(String Cep) {
         this.Cep = Cep;
     }
-    
 }
