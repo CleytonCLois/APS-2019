@@ -20,7 +20,7 @@ public class LoginController {
     }
     
     public void FizTarefa(){
-        System.out.print("teste");
+        System.out.println("teste");
         this.view.exibirMensagem("Executado");
     }
 }
