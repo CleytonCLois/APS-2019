@@ -15,26 +15,31 @@ import java.util.logging.Logger;
  *
  * @author cleyton
  */
-public class Alocacao {
+public class Agendamento {
     private int id;
     private Cliente cliente;
-    private Servico servico;
+    private Tipo tipoQuadra;
     private float valor;
     private Date data;
     private String observacao;
 
-    public Alocacao(int id, Cliente cliente, Servico servico, float valor, String data) {
+    public Agendamento(Cliente cliente, Tipo tipoQuadra, float valor, String data) {
         this.id = id;
         this.cliente = cliente;
-        this.servico = servico;
+        this.tipoQuadra = tipoQuadra;
         this.valor = valor;
         try {
             this.data = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(data);
         } catch (ParseException ex) {
-            Logger.getLogger(Alocacao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Agendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    public Agendamento(Cliente cliente, Tipo tipoQuadra, float valor, String data, String observacao) {
+        this(cliente,tipoQuadra,valor,data);
+        this.observacao = observacao;
+    }
+    
     public int getId() {
         return id;
     }
@@ -51,12 +56,12 @@ public class Alocacao {
         this.cliente = cliente;
     }
 
-    public Servico getServico() {
-        return servico;
+    public Tipo getTipo() {
+        return tipoQuadra;
     }
 
-    public void setServico(Servico servico) {
-        this.servico = servico;
+    public void setTipo(Tipo tipoQuadra) {
+        this.tipoQuadra = tipoQuadra;
     }
 
     public float getValor() {
@@ -70,6 +75,15 @@ public class Alocacao {
     public Date getData() {
         return data;
     }
+    
+    public String getDataFormatada(){
+        return new SimpleDateFormat("dd/MM/yyyy").format(data);
+    }
+    
+    public String getHoraFormatada(){
+        return new SimpleDateFormat("HH:mm").format(data);
+    }    
+    
 
     public void setData(Date data) {
         this.data = data;
@@ -82,6 +96,8 @@ public class Alocacao {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-    
-    
+
+    public void SetVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

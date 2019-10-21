@@ -5,17 +5,28 @@
  */
 package View;
 
+import Controller.AgendaController;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Dinopc
  */
-public class Agendamento extends javax.swing.JFrame {
+public class Agenda extends javax.swing.JFrame {
+
+    private final AgendaController controller;
 
     /**
      * Creates new form Agenda
      */
-    public Agendamento() {
+    public Agenda() {
         initComponents();
+        controller = new AgendaController(this);
+        iniciar();
     }
 
     /**
@@ -46,27 +57,23 @@ public class Agendamento extends javax.swing.JFrame {
         TxtNome = new javax.swing.JLabel();
         InputNome = new javax.swing.JTextField();
         FundoSecundario = new javax.swing.JLabel();
-        FundoPrincipal = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Cliente", "Valor", "Data", "Horário"
+                "Id", "Cliente", "Tipo Quadra", "Valor", "Data", "Horário"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,75 +86,97 @@ public class Agendamento extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Tabela);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 640, 1040, 230));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 1040, 230));
 
         Button.setBackground(new java.awt.Color(51, 154, 139));
         Button.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         Button.setForeground(new java.awt.Color(255, 255, 255));
         Button.setLabel("Agendar Locação");
-        getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, 1040, 40));
+        Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1040, 40));
 
-        SelectTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(SelectTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 390, 30));
+        SelectTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SelectTipoItemStateChanged(evt);
+            }
+        });
+        SelectTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectTipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SelectTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 390, 30));
 
-        SelectCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(SelectCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 390, 30));
+        getContentPane().add(SelectCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 390, 30));
 
         InputData.setToolTipText("");
-        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 220, 390, 30));
+        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 390, 30));
 
         TxtObservacao.setBackground(new java.awt.Color(255, 255, 255));
         TxtObservacao.setForeground(new java.awt.Color(255, 255, 255));
         TxtObservacao.setText("Observações:");
-        getContentPane().add(TxtObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 390, -1, -1));
+        getContentPane().add(TxtObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, -1, -1));
 
         InputObservacao.setColumns(20);
         InputObservacao.setRows(5);
         jScrollPane1.setViewportView(InputObservacao);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 410, 400, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, 400, 110));
 
         TxtHorario.setBackground(new java.awt.Color(255, 255, 255));
         TxtHorario.setForeground(new java.awt.Color(255, 255, 255));
         TxtHorario.setText("Horário:");
-        getContentPane().add(TxtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, -1, -1));
-        getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 390, 30));
+        getContentPane().add(TxtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, -1, -1));
+        getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 390, 30));
 
         TxtData.setBackground(new java.awt.Color(255, 255, 255));
         TxtData.setForeground(new java.awt.Color(255, 255, 255));
         TxtData.setText("Data:");
-        getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, -1, -1));
-        getContentPane().add(InputValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 390, 30));
+        getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, -1, -1));
+        getContentPane().add(InputValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 390, 30));
 
         TxtValor.setBackground(new java.awt.Color(255, 255, 255));
         TxtValor.setForeground(new java.awt.Color(255, 255, 255));
         TxtValor.setText("Valor (R$):");
-        getContentPane().add(TxtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
+        getContentPane().add(TxtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         TxtTipo.setBackground(new java.awt.Color(255, 255, 255));
         TxtTipo.setForeground(new java.awt.Color(255, 255, 255));
-        TxtTipo.setText("Tipo quadra:");
-        getContentPane().add(TxtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, -1));
+        TxtTipo.setText("Quadra:");
+        getContentPane().add(TxtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         TxtCliente.setBackground(new java.awt.Color(255, 255, 255));
         TxtCliente.setForeground(new java.awt.Color(255, 255, 255));
         TxtCliente.setText("Cliente:");
-        getContentPane().add(TxtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        getContentPane().add(TxtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         TxtNome.setBackground(new java.awt.Color(255, 255, 255));
         TxtNome.setForeground(new java.awt.Color(255, 255, 255));
         TxtNome.setText("Nome:");
-        getContentPane().add(TxtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
-        getContentPane().add(InputNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 390, 30));
+        getContentPane().add(TxtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(InputNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 390, 30));
 
         FundoSecundario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/Agenda-PainelFundo.png"))); // NOI18N
-        getContentPane().add(FundoSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, -1, -1));
-
-        FundoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/AgendaFundo.jpg"))); // NOI18N
-        getContentPane().add(FundoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(FundoSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 1170, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SelectTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SelectTipoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectTipoItemStateChanged
+
+    private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
+        this.controller.agendar();
+    }//GEN-LAST:event_ButtonActionPerformed
+
+    private void SelectTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,28 +195,29 @@ public class Agendamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Agenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agendamento().setVisible(true);
+                new Agenda().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Button;
-    private javax.swing.JLabel FundoPrincipal;
     private javax.swing.JLabel FundoSecundario;
     private javax.swing.JFormattedTextField InputData;
     private javax.swing.JTextField InputHorario;
@@ -207,4 +237,76 @@ public class Agendamento extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    private void iniciar() {
+        this.controller.atualizarTabela();
+        this.controller.atualizarCliente();
+        this.controller.atualizarTipos();
+    }
+
+    public JTable getTabela() {
+        return Tabela;
+    }
+
+    public void setTabela(JTable Tabela) {
+        this.Tabela = Tabela;
+    }
+
+    public JComboBox<String> getSelectCliente() {
+        return SelectCliente;
+    }
+
+    public void setSelectCliente(JComboBox<String> SelectCliente) {
+        this.SelectCliente = SelectCliente;
+    }
+
+    public JComboBox<String> getSelectTipo() {
+        return SelectTipo;
+    }
+
+    public void setSelectTipo(JComboBox<String> SelectTipo) {
+        this.SelectTipo = SelectTipo;
+    }
+
+    public JFormattedTextField getInputData() {
+        return InputData;
+    }
+
+    public void setInputData(JFormattedTextField InputData) {
+        this.InputData = InputData;
+    }
+
+    public JTextField getInputHorario() {
+        return InputHorario;
+    }
+
+    public void setInputHorario(JTextField InputHorario) {
+        this.InputHorario = InputHorario;
+    }
+
+    public JTextArea getInputObservacao() {
+        return InputObservacao;
+    }
+
+    public void setInputObservacao(JTextArea InputObservacao) {
+        this.InputObservacao = InputObservacao;
+    }
+
+    public JTextField getInputNome() {
+        return InputNome;
+    }
+
+    public void setInputNome(JTextField InputNome) {
+        this.InputNome = InputNome;
+    }
+
+    public JTextField getInputValor() {
+        return InputValor;
+    }
+
+    public void setInputValor(JTextField InputValor) {
+        this.InputValor = InputValor;
+    }
+
+    
 }

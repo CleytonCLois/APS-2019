@@ -5,17 +5,22 @@
  */
 package View;
 
+import Controller.MenuPrincipalController;
+
 /**
  *
  * @author Dinopc
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
+    private final MenuPrincipalController controller;
+
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        this.controller = new MenuPrincipalController(this);
     }
 
     /**
@@ -33,6 +38,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CadastroCliente = new javax.swing.JMenuItem();
         CadastroServico = new javax.swing.JMenuItem();
         DropOperacao = new javax.swing.JMenu();
+        Agendamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +57,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DropCadastro.add(Cadastro);
 
         DropOperacao.setText("Operação");
+
+        Agendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/icons/relatorioTrabalho-icon.png"))); // NOI18N
+        Agendamento.setText("Agendamento");
+        Agendamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgendamentoActionPerformed(evt);
+            }
+        });
+        DropOperacao.add(Agendamento);
+
         DropCadastro.add(DropOperacao);
 
         setJMenuBar(DropCadastro);
@@ -59,17 +75,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoActionPerformed
+        this.controller.navegarParaAgendamento();
+    }//GEN-LAST:event_AgendamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +127,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Agendamento;
     private javax.swing.JMenu Cadastro;
     private javax.swing.JMenuItem CadastroCliente;
     private javax.swing.JMenuItem CadastroServico;
