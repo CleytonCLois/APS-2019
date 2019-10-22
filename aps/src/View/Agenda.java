@@ -111,6 +111,11 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(SelectTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 390, 30));
 
+        SelectCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(SelectCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 390, 30));
 
         InputData.setToolTipText("");
@@ -177,6 +182,10 @@ public class Agenda extends javax.swing.JFrame {
     private void SelectTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SelectTipoActionPerformed
+
+    private void SelectClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,14 +277,6 @@ public class Agenda extends javax.swing.JFrame {
         this.SelectTipo = SelectTipo;
     }
 
-    public JFormattedTextField getInputData() {
-        return InputData;
-    }
-
-    public void setInputData(JFormattedTextField InputData) {
-        this.InputData = InputData;
-    }
-
     public JTextField getInputHorario() {
         return InputHorario;
     }
@@ -291,6 +292,15 @@ public class Agenda extends javax.swing.JFrame {
     public void setInputObservacao(JTextArea InputObservacao) {
         this.InputObservacao = InputObservacao;
     }
+
+    public JFormattedTextField getInputData() {
+        return InputData;
+    }
+
+    public void setInputData(JFormattedTextField InputData) {
+        this.InputData = InputData;
+    }
+    
 
     public JTextField getInputNome() {
         return InputNome;

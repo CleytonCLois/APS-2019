@@ -44,4 +44,9 @@ public class Cliente extends Pessoa{
     public void setCep(String Cep) {
         this.Cep = Cep;
     }
+    
+    @Override
+    public String toString(){
+        return getNome();
+    }
 }

@@ -51,7 +51,7 @@ public class AgendaHelper implements IHelper {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getSelectCliente().getModel();
         
         for (Cliente buscaCliente : buscaClientes) { // adicionando objeto cliente no combobox
-            comboBoxModel.addElement(buscaCliente.getNome());
+            comboBoxModel.addElement(buscaCliente);
         }
     }
 
@@ -59,7 +59,7 @@ public class AgendaHelper implements IHelper {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getSelectTipo().getModel();
         
         for (Tipo buscaTipo : buscaTipos) {
-            comboBoxModel.addElement(buscaTipo.getDescricao());
+            comboBoxModel.addElement(buscaTipo);
         }
     }
     
