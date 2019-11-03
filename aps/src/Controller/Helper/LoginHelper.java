@@ -45,7 +45,5 @@ public class LoginHelper implements IHelper{
     private String converterSenha(char[] senha){
         String senhaConvertida = String.copyValueOf(senha);
         return senhaConvertida;
-    }
-    
-    
+    }   
 }

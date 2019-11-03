@@ -83,7 +83,6 @@ public class Agendamento {
     public String getHoraFormatada(){
         return new SimpleDateFormat("HH:mm").format(data);
     }    
-    
 
     public void setData(Date data) {
         this.data = data;

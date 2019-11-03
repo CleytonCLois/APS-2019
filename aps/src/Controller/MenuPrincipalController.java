@@ -6,6 +6,7 @@
 package Controller;
 
 import View.Agenda;
+import View.ViewCliente;
 import View.MenuPrincipal;
 
 /**
@@ -23,5 +24,10 @@ public class MenuPrincipalController {
     public void navegarParaAgendamento(){
         Agenda agenda = new Agenda();
         agenda.setVisible(true);
+    }
+    
+    public void navegarParaClientes(){
+        ViewCliente cliente = new ViewCliente();
+        cliente.setVisible(true);
     }
 }

@@ -36,7 +36,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         DropCadastro = new javax.swing.JMenuBar();
         Cadastro = new javax.swing.JMenu();
         CadastroCliente = new javax.swing.JMenuItem();
-        CadastroServico = new javax.swing.JMenuItem();
         DropOperacao = new javax.swing.JMenu();
         Agendamento = new javax.swing.JMenuItem();
 
@@ -48,11 +47,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         CadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/icons/cliente-icon.png"))); // NOI18N
         CadastroCliente.setText("Cliente");
+        CadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastroClienteActionPerformed(evt);
+            }
+        });
         Cadastro.add(CadastroCliente);
-
-        CadastroServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/icons/relatorioTrabalho-icon.png"))); // NOI18N
-        CadastroServico.setText("Serviço");
-        Cadastro.add(CadastroServico);
 
         DropCadastro.add(Cadastro);
 
@@ -90,6 +90,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void AgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoActionPerformed
         this.controller.navegarParaAgendamento();
     }//GEN-LAST:event_AgendamentoActionPerformed
+
+    private void CadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroClienteActionPerformed
+        this.controller.navegarParaClientes();
+    }//GEN-LAST:event_CadastroClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,7 +134,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Agendamento;
     private javax.swing.JMenu Cadastro;
     private javax.swing.JMenuItem CadastroCliente;
-    private javax.swing.JMenuItem CadastroServico;
     private javax.swing.JMenuBar DropCadastro;
     private javax.swing.JMenu DropOperacao;
     private javax.swing.JLabel jLabel1;

@@ -35,7 +35,7 @@ public class Banco {
         
         Usuario usuario1 = new Usuario(1, "cliente", 'M', "29/12/2000", "cliente@cliente.com", "123456789", "cliente", "administrador");
          
-        Cliente cliente1 = new Cliente(10, "Felipe Luis", 'M', "12/06/1999", "felipeluispet@gmail.com", "845713647", "Rua marechal 1023 Canudos NH",  "933000874");
+        Cliente cliente1 = new Cliente(10, "Felipe Luis", 'M', "12/06/1999", "felipeluispet@gmail.com", "845713647", "Rua marechal 1023 Canudos NH");
         
         Tipo quadra01 = new Tipo(1, "Quadra 1", 80);
         Tipo quadra02 = new Tipo(2, "Quadra 2", 80);

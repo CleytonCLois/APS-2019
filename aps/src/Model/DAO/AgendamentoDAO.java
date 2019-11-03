@@ -24,8 +24,6 @@ public class AgendamentoDAO {
             agendamento.setId(proximoId());
             Banco.agendamento.add(agendamento);
         }
-        
-        
     }
     
     /**
@@ -42,7 +40,6 @@ public class AgendamentoDAO {
             }
         }
         return false;      
-
     }
     
     /**
@@ -88,10 +85,7 @@ public class AgendamentoDAO {
             if(maiorId < id){
                 maiorId = id;
             }
-            
         }
-        
         return maiorId + 1;
     }
-    
 }

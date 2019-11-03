@@ -28,7 +28,17 @@ abstract public class Pessoa {
         this.id = id;
         this.nome = nome;
     }
-
+    public Pessoa(int id, String nome, String dataNascimento, String email, String Rg) {
+        this.nome = nome;
+        try {
+            this.dataNascimento = new SimpleDateFormat("dd/mm/yyyy").parse(dataNascimento);
+        } catch (ParseException ex) {
+            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.email = email;
+        this.Rg = Rg;
+    }
+    
     public Pessoa(int id, String nome, char sexo, String dataNascimento, String email, String Rg) {
         this.id = id;
         this.nome = nome;
@@ -74,6 +84,9 @@ abstract public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getDataFormatada(){
+        return new SimpleDateFormat("dd/MM/yyyy").format(dataNascimento);
+    }
     public String getTelefone() {
         return telefone;
     }
@@ -97,6 +110,4 @@ abstract public class Pessoa {
     public void setRg(String Rg) {
         this.Rg = Rg;
     }
-    
-    
 }
