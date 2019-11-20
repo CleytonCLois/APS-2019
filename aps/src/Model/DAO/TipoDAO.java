@@ -6,6 +6,7 @@
 package Model.DAO;
 
 import Model.Tipo;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public class TipoDAO {
     
-    
+    private ResultSet result;
     /**
      * Insere um tipodentro do banco de dados
      * @param tipoexige que seja passado um objeto do tipo tipo
@@ -22,6 +23,7 @@ public class TipoDAO {
     public void insert(Tipo tipo){
         Banco.tipo.add(tipo);
     }
+    
     
     /**
      * Atualiza um Objeto no banco de dados
@@ -71,6 +73,17 @@ public class TipoDAO {
      */
     private boolean idSaoIguais(Tipo tipo, Tipo tipoAComparar) {
         return tipo.getId() ==  tipoAComparar.getId();
+    }
+    
+    public ResultSet SelecionarTudo(){
+        
+        ConnectionBD.Conectar();
+    
+        result = ConnectionBD.SelectQuery("select * from quadra;");
+        
+        ConnectionBD.Desconectar();
+        
+        return result;
     }
     
 }

@@ -5,6 +5,10 @@
  */
 package Model;
 
+import Model.DAO.ConnectionBD;
+import java.sql.ResultSet;
+
+
 /**
  *
  * @author Dinopc
@@ -21,6 +25,8 @@ public class Tipo {
         this.descricao = descricao;
         this.valor = valor;
     }
+
+
 
     public String getDescricao() {
         return descricao;
@@ -50,4 +56,6 @@ public class Tipo {
     public String toString(){
         return getDescricao();
     }
+    
+
 }

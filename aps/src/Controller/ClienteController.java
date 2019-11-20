@@ -17,7 +17,7 @@ import Model.Tipo;
 import View.Agenda;
 import View.ViewCliente;
 import java.util.ArrayList;
-
+import java.sql.SQLException;
 /**
  *
  * @author Dinopc
@@ -31,10 +31,6 @@ public class ClienteController {
         this.view = view;
         this.helper = new ClienteHelper(view);
     }
-
-    public ClienteController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public void atualizarTabela(){
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -44,7 +40,12 @@ public class ClienteController {
     
     public void agendar(){
         Cliente cliente = helper.retornaUsuario();
-        new ClienteDAO().insert(cliente);
+        try {
+            new ClienteDAO().cadastrarCliente(cliente);
+        } catch (SQLException | NumberFormatException e) {
+             System.out.println("Erro ao realizar transferencia" + e);
+        }
+
         atualizarTabela();
         helper.limparTela();
     }

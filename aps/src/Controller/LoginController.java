@@ -10,6 +10,8 @@ import Model.DAO.UsuarioDAO;
 import Model.Usuario;
 import View.Login;
 import View.MenuPrincipal;
+import Model.DAO.ConnectionBD;
+import java.sql.*;
 
 /**
  *
@@ -17,6 +19,10 @@ import View.MenuPrincipal;
  */
 public class LoginController {
 
+    Connection con = null;
+    PreparedStatement stm = null;
+    ResultSet rs = null;    
+    
     private final Login view;
     private final LoginHelper helper;
 
@@ -40,6 +46,7 @@ public class LoginController {
             view.exibirMensagem("Dados invalidos");
         }
     }
+    
        
     public void FizTarefa(){
         System.out.println("teste");
