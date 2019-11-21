@@ -88,7 +88,6 @@ public class AgendaHelper implements IHelper {
 
     @Override
     public void limparTela() {
-        view.getInputNome().setText("");
         view.getInputValor().setText("");
         view.getInputData().setText("");
         view.getInputHorario().setText("");

@@ -57,4 +57,11 @@ public class AgendaController {
         atualizarTabela();
         helper.limparTela();
     }
+    
+    public void deletar(){
+        Agendamento agendamento = helper.retornaUsuario();
+        new AgendamentoDAO().delete(agendamento);
+        atualizarTabela();
+        helper.limparTela();
+    }
 }       

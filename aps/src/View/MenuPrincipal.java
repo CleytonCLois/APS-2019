@@ -32,68 +32,42 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        DropCadastro = new javax.swing.JMenuBar();
-        Cadastro = new javax.swing.JMenu();
-        CadastroCliente = new javax.swing.JMenuItem();
-        DropOperacao = new javax.swing.JMenu();
-        Agendamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/AgendaCliente.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 250));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/AdicionaCliente.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 280, 260));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/fundo-MenuPrincipal.jpg"))); // NOI18N
-
-        Cadastro.setText("Cadastro");
-
-        CadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/icons/cliente-icon.png"))); // NOI18N
-        CadastroCliente.setText("Cliente");
-        CadastroCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastroClienteActionPerformed(evt);
-            }
-        });
-        Cadastro.add(CadastroCliente);
-
-        DropCadastro.add(Cadastro);
-
-        DropOperacao.setText("Operação");
-
-        Agendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/icons/relatorioTrabalho-icon.png"))); // NOI18N
-        Agendamento.setText("Agendamento");
-        Agendamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgendamentoActionPerformed(evt);
-            }
-        });
-        DropOperacao.add(Agendamento);
-
-        DropCadastro.add(DropOperacao);
-
-        setJMenuBar(DropCadastro);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 1290, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AgendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendamentoActionPerformed
-        this.controller.navegarParaAgendamento();
-    }//GEN-LAST:event_AgendamentoActionPerformed
-
-    private void CadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroClienteActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         this.controller.navegarParaClientes();
-    }//GEN-LAST:event_CadastroClienteActionPerformed
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        this.controller.navegarParaAgendamento();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,11 +105,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Agendamento;
-    private javax.swing.JMenu Cadastro;
-    private javax.swing.JMenuItem CadastroCliente;
-    private javax.swing.JMenuBar DropCadastro;
-    private javax.swing.JMenu DropOperacao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
