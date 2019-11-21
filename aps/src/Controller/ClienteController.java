@@ -48,4 +48,11 @@ public class ClienteController {
         atualizarTabela();
         helper.limparTela();
     }
+    
+    public void deletar(){
+        Cliente cliente = helper.retornaUsuario();
+        new ClienteDAO().delete(cliente);
+        atualizarTabela();
+        helper.limparTela();
+    }
 }       

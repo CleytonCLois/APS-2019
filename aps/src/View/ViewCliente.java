@@ -39,6 +39,7 @@ public class ViewCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Button1 = new java.awt.Button();
         InputRg = new javax.swing.JTextField();
         TxtRg = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -54,12 +55,24 @@ public class ViewCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(InputRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 390, 30));
+
+        Button1.setActionCommand("Excluir Cliente");
+        Button1.setBackground(new java.awt.Color(255, 0, 51));
+        Button1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        Button1.setForeground(new java.awt.Color(255, 255, 255));
+        Button1.setLabel("Excluir Cliente");
+        Button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 410, 40));
+        getContentPane().add(InputRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 390, 30));
 
         TxtRg.setBackground(new java.awt.Color(255, 255, 255));
         TxtRg.setForeground(new java.awt.Color(255, 255, 255));
         TxtRg.setText("RG:");
-        getContentPane().add(TxtRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        getContentPane().add(TxtRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
         Tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,13 +99,13 @@ public class ViewCliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Tabela);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 1040, 230));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 920, 230));
 
         TxtEmail.setBackground(new java.awt.Color(255, 255, 255));
         TxtEmail.setForeground(new java.awt.Color(255, 255, 255));
         TxtEmail.setText("E-mail:");
-        getContentPane().add(TxtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        getContentPane().add(InputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 390, 30));
+        getContentPane().add(TxtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        getContentPane().add(InputEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 390, 30));
 
         Button.setActionCommand("Criar Cliente");
         Button.setBackground(new java.awt.Color(51, 154, 139));
@@ -104,15 +117,15 @@ public class ViewCliente extends javax.swing.JFrame {
                 ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 1040, 40));
+        getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 450, 40));
 
         InputData.setToolTipText("");
-        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 390, 30));
+        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 390, 30));
 
         TxtData.setBackground(new java.awt.Color(255, 255, 255));
         TxtData.setForeground(new java.awt.Color(255, 255, 255));
         TxtData.setText("Data Nascimento:");
-        getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, -1, -1));
 
         TxtNome.setBackground(new java.awt.Color(255, 255, 255));
         TxtNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +134,7 @@ public class ViewCliente extends javax.swing.JFrame {
         getContentPane().add(InputNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 390, 30));
 
         FundoSecundario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagem/Agenda-PainelFundo.png"))); // NOI18N
-        getContentPane().add(FundoSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 1170, 730));
+        getContentPane().add(FundoSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 1030, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +142,10 @@ public class ViewCliente extends javax.swing.JFrame {
     private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonActionPerformed
         this.controller.agendar();
     }//GEN-LAST:event_ButtonActionPerformed
+
+    private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
+        this.controller.deletar();
+    }//GEN-LAST:event_Button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +199,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button Button;
+    private java.awt.Button Button1;
     private javax.swing.JLabel FundoSecundario;
     private javax.swing.JFormattedTextField InputData;
     private javax.swing.JTextField InputEmail;
