@@ -35,15 +35,15 @@ public class ViewCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        InputData = new javax.swing.JFormattedTextField();
+        InputRg = new javax.swing.JFormattedTextField();
         Button1 = new java.awt.Button();
-        InputRg = new javax.swing.JTextField();
         TxtRg = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
         TxtEmail = new javax.swing.JLabel();
         InputEmail = new javax.swing.JTextField();
         Button = new java.awt.Button();
-        InputData = new javax.swing.JFormattedTextField();
         TxtData = new javax.swing.JLabel();
         TxtNome = new javax.swing.JLabel();
         InputNome = new javax.swing.JTextField();
@@ -51,6 +51,26 @@ public class ViewCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        try {
+            InputData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 390, 30));
+
+        try {
+            InputRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        InputRg.setText("\n");
+        InputRg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputRgActionPerformed(evt);
+            }
+        });
+        getContentPane().add(InputRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 390, 30));
 
         Button1.setActionCommand("Excluir Cliente");
         Button1.setBackground(new java.awt.Color(255, 0, 51));
@@ -63,7 +83,6 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 410, 40));
-        getContentPane().add(InputRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 390, 30));
 
         TxtRg.setBackground(new java.awt.Color(255, 255, 255));
         TxtRg.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,9 +134,6 @@ public class ViewCliente extends javax.swing.JFrame {
         });
         getContentPane().add(Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 450, 40));
 
-        InputData.setToolTipText("");
-        getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 390, 30));
-
         TxtData.setBackground(new java.awt.Color(255, 255, 255));
         TxtData.setForeground(new java.awt.Color(255, 255, 255));
         TxtData.setText("Data Nascimento:");
@@ -142,6 +158,10 @@ public class ViewCliente extends javax.swing.JFrame {
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
         this.controller.deletar();
     }//GEN-LAST:event_Button1ActionPerformed
+
+    private void InputRgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputRgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputRgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +220,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField InputData;
     private javax.swing.JTextField InputEmail;
     private javax.swing.JTextField InputNome;
-    private javax.swing.JTextField InputRg;
+    private javax.swing.JFormattedTextField InputRg;
     private javax.swing.JTable Tabela;
     private javax.swing.JLabel TxtData;
     private javax.swing.JLabel TxtEmail;
@@ -229,7 +249,6 @@ public class ViewCliente extends javax.swing.JFrame {
         this.InputData = InputData;
     }
     
-
     public JTextField getInputNome() {
         return InputNome;
     }
@@ -246,11 +265,11 @@ public class ViewCliente extends javax.swing.JFrame {
         this.InputEmail = InputEmail;
     }
 
-    public JTextField getInputRg() {
+    public JFormattedTextField getInputRg() {
         return InputRg;
     }
 
-    public void setInputRg(JTextField InputRg) {
+    public void setInputRg(JFormattedTextField InputRg) {
         this.InputRg = InputRg;
     }
     

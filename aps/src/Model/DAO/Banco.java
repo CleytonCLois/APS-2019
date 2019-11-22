@@ -44,11 +44,6 @@ public class Banco {
             
             result = new UsuarioDAO().SelecionarTudo();
         
-<<<<<<< HEAD
-        Usuario usuario1 = new Usuario(1, "cliente", 'M', "29/12/2000", "cliente@cliente.com", "123456789", "cliente", "administrador");
-         
-        //Cliente cliente1 = new Cliente(10, "Felipe Luis", 'M', "12/06/1999", "felipeluispet@gmail.com", "845713647", "Rua marechal 1023 Canudos NH");
-=======
             while ( result.next() ) {
                 Usuario u = new Usuario(result.getInt("cod_login"),result.getString("login_usuario"), 
                                 result.getString("senha_usuario"));
@@ -57,17 +52,12 @@ public class Banco {
         } catch (SQLException | NumberFormatException e) {
             System.out.println("Erro ao realizar transferencia" + e);
         }
->>>>>>> 5c27a185c8dec6fa14ee51d788aee0e45ad0c35f
         
         //Usuario usuario1 = new Usuario(1, "cliente", "Mar", "29/12/2000", "cliente@cliente.com", "123456789", "cliente", "administrador");
 
-<<<<<<< HEAD
-        //Agendamento agendamento01 = new Agendamento(cliente1, quadra01, 18, "14/07/2018 10:30");
-=======
         try {
             
             result = new ClienteDAO().SelecionarTudo();
->>>>>>> 5c27a185c8dec6fa14ee51d788aee0e45ad0c35f
         
             while ( result.next() ) {
                 Cliente c = new Cliente(result.getInt("cod_cliente"),result.getString("nome"), 
@@ -78,13 +68,9 @@ public class Banco {
             System.out.println("Erro ao realizar transferencia" + e);
         }
         
-<<<<<<< HEAD
-        //cliente.add(cliente1);
-=======
         try {
             
             result = new TipoDAO().SelecionarTudo();
->>>>>>> 5c27a185c8dec6fa14ee51d788aee0e45ad0c35f
         
             while ( result.next() ) {
                 Tipo t = new Tipo(result.getInt("cod_quadra"),result.getString("nome_quadra"), result.getFloat("valor_quadra"));
@@ -109,10 +95,6 @@ public class Banco {
         
         ConnectionBD.Desconectar();
         
-<<<<<<< HEAD
-        //agendamento.add(agendamento01);
-=======
->>>>>>> 5c27a185c8dec6fa14ee51d788aee0e45ad0c35f
     }
     
     

@@ -22,7 +22,7 @@ public class ConnectionBD {
     // HOST PADRï¿½O USAR QUANDO ESTIVER SEM O DB "jdbc:postgresql://127.0.0.1:5432/"
     private static String URL = "jdbc:postgresql://localhost:5432/"; // url do servidor 192.168.4.204:5432
     private static String USER = "quadraesporte"; // usuario do db
-    private static String PASSWORD = "quadraesporte123"; // senha do usuario alterar
+    private static String PASSWORD = "campo123"; // senha do usuario alterar
     private static String DATABASE = "esporte"; // banco 
 
     public static void Conectar() {
