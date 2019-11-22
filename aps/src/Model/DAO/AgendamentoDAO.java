@@ -102,30 +102,32 @@ public class AgendamentoDAO {
     
     public void AgendarQuadra(Agendamento agend) throws SQLException{
       Integer count = 1;
-      String sql = "insert into agendamento (cod_cliente, cod_quadra, dt_agendamento, horario_agendamento) values(?,?,?,?)";
+      String sql = "insert into agendamento (cod_quadra, nome_cliente, nome_quadra, valor_quadra, dt_agendamento, horario_agendamento ) values(?,?,?,?,?,?)";
         try {
-                ConnectionBD.Conectar();
-                PreparedStatement stm = ConnectionBD.preparedStament(sql);
-                try {
-                    result = ConnectionBD.SelectQuery("select * from agendamento;");
-                    while ( result.next() ) {
-                        count = count + 1;
-                    }
-                } catch (SQLException | NumberFormatException e) {
-                    System.out.println("Erro ao realizar transferencia" + e);
+            ConnectionBD.Conectar();
+            PreparedStatement stm = ConnectionBD.preparedStament(sql);
+            try {
+                result = ConnectionBD.SelectQuery("select * from agendamento;");
+                while ( result.next() ) {
+                    count = count + 1;
                 }
-                        
-                stm.setInt(1, count);
-                stm.setInt(2, agend.getId_quadra());
-                stm.setString(3, agend.getData());
-                stm.setString(4, agend.getHora());
-                                
-                ConnectionBD.runPreparedStatment(stm);
+            } catch (SQLException | NumberFormatException e) {
+                System.out.println("Erro ao coletar agendamento" + e);
+            }
 
-                } catch (NumberFormatException e) {
-                System.out.println("Erro ao cadastrar usuario" + e);
+            stm.setInt(1, count);
+            stm.setString(2, agend.getNome_cliente());
+            stm.setString(3, agend.getNome_quadra());
+            stm.setFloat(4, agend.getValor());
+            stm.setString(5, agend.getData());
+            stm.setString(6, agend.getHora());
+
+            ConnectionBD.runPreparedStatment(stm);
+
+            } catch (NumberFormatException e) {
+            System.out.println("Erro ao cadastrar um agendamento" + e);
         }finally{ 
-                ConnectionBD.Desconectar();
+            ConnectionBD.Desconectar();
         }
     }
     

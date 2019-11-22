@@ -19,12 +19,24 @@ public class Agendamento {
     private int id;
     private Cliente cliente;
     private Tipo tipoQuadra;
+    private String observacao;
+   
+    private int id_quadra;
+    private String nome_cliente;
+    private String nome_quadra;
     private float valor;
     private String data;
-    private String observacao;
-    private int id_quadra;
     private String hora;
 
+    public Agendamento(int id_quadra, String nome_cliente, String nome_quadra, float valor, String data, String horario) {
+        this.id_quadra = id_quadra;
+        this.nome_cliente = nome_cliente;
+        this.nome_quadra = nome_quadra;
+        this.valor = valor;
+        this.data = data;
+        this.hora = hora;
+    }
+    
     public Agendamento(Cliente cliente, Tipo tipoQuadra, float valor, String data) {
         this.id = id;
         this.cliente = cliente;
@@ -145,5 +157,33 @@ public class Agendamento {
      */
     public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    /**
+     * @return the nome_cliente
+     */
+    public String getNome_cliente() {
+        return nome_cliente;
+    }
+
+    /**
+     * @param nome_cliente the nome_cliente to set
+     */
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
+    }
+
+    /**
+     * @return the nome_quadra
+     */
+    public String getNome_quadra() {
+        return nome_quadra;
+    }
+
+    /**
+     * @param nome_quadra the nome_quadra to set
+     */
+    public void setNome_quadra(String nome_quadra) {
+        this.nome_quadra = nome_quadra;
     }
 }

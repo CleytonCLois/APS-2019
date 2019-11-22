@@ -10,6 +10,7 @@ import Model.Cliente;
 import Model.DAO.ConnectionBD;
 import Model.Tipo;
 import View.Agenda;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -74,20 +75,17 @@ public class AgendaHelper implements IHelper {
         
         DefaultTableModel tableModel = (DefaultTableModel) view.getTabela().getModel();
         tableModel.setNumRows(0);
-        // zerando a tabela pra percorrer ela toda preenchendo/populando ela
-        System.out.println("TESTE" + obterCliente() );
+
         for (Agendamento listaDeAgendamento : listaDeAgendamentos) {
             tableModel.addRow(
                     new Object[]{
-                            listaDeAgendamento.getId_quadra(),  
-                            getNameClient(getIdClient(obterCliente())), // conseguir nome cliente
-//                        listaDeAgendamento.getId(),
-//                        listaDeAgendamento.getCliente().getNome(),
-                        listaDeAgendamento.getTipo().getDescricao(),
+                        listaDeAgendamento.getId_quadra(),  
+                        listaDeAgendamento.getNome_cliente(),
+                        listaDeAgendamento.getNome_quadra(),
                         listaDeAgendamento.getValor(),
                         listaDeAgendamento.getData(),
                         listaDeAgendamento.getHora(),
-                        listaDeAgendamento.getObservacao(),
+//                        listaDeAgendamento.getObservacao(),
                     }
             );
         }
@@ -121,21 +119,27 @@ public class AgendaHelper implements IHelper {
     @Override
     public Agendamento retornaUsuario() {
         Cliente cliente = obterCliente();
-        System.out.println("CLIENTE>>>>>" + cliente);
         Tipo tipo = obterTipo();
-        System.out.println("TIPO>>>>>" + tipo);
-//        String valorString = view.getInputValor().getText();
-//        float valor = Float.parseFloat(valorString);
-//        String data = view.getInputData().getText();
-//        String hora = view.getInputHorario().getText();
-//        String dataHora = (data + " " + hora);
-//        String observacao = view.getInputObservacao().getText();
-//        
-//        Agendamento agendamento = new Agendamento(cliente, tipo, valor, dataHora, observacao);
-//        return agendamento;
-          
-          Agendamento agendamento = new Agendamento(1, 1, "12/02/2000", "12/02/2000");
-          return agendamento;
+        String valorString = view.getInputValor().getText();
+        float valor = Float.parseFloat(valorString);
+        String data = view.getInputData().getText();
+        String hora = view.getInputHorario().getText();
+        
+        Integer count = 1;
+        String sql = "insert into agendamento (cod_quadra, nome_cliente, nome_quadra, valor_quadra, dt_agendamento, horario_agendamento ) values(?,?,?,?,?,?)";
+        ConnectionBD.Conectar();
+        PreparedStatement stm = ConnectionBD.preparedStament(sql);
+        try {
+            result = ConnectionBD.SelectQuery("select * from agendamento;");
+            while ( result.next() ) {
+                count = count + 1;
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Erro ao coletar agendamento" + e);
+        }
+
+        Agendamento agendamento = new Agendamento(count, cliente.getNome(), tipo.getDescricao(), valor, data, hora);
+        return agendamento;
     }
 
     @Override
