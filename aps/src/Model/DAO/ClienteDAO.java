@@ -7,6 +7,8 @@ package Model.DAO;
 
 import Model.Cliente;
 import java.util.ArrayList;
+import java.sql.*;
+import java.util.Scanner;
 
 /**
  *
@@ -14,7 +16,8 @@ import java.util.ArrayList;
  */
 public class ClienteDAO {
     
-    
+    private Scanner s = new Scanner(System.in);
+    private ResultSet result;
     /**
      * Insere um cliente dentro do banco de dados
      * @param cliente exige que seja passado um objeto do tipo cliente
@@ -60,6 +63,8 @@ public class ClienteDAO {
      * @return uma lista com todos os registros do banco
      */
     public ArrayList<Cliente> selectAll(){
+        System.out.println("LISTA CLIENTES" + Banco.cliente);
+        Banco.inicia();
         return Banco.cliente;
     }
     
@@ -73,6 +78,38 @@ public class ClienteDAO {
         return cliente.getId() ==  clienteAComparar.getId();
     }
     
+     public void cadastrarCliente(Cliente cliente) throws SQLException{
+       
+      String sql = "insert into cliente (nome, dt_nascimento, email_cliente,rg_cliente) values(?,?,?,?)";
+        try {
+                ConnectionBD.Conectar();
+                PreparedStatement stm = ConnectionBD.preparedStament(sql);
+                
+
+                stm.setString(1, cliente.getNome());
+                stm.setString(2, cliente.getDataNascimento());
+                stm.setString(3, cliente.getEmail());
+                stm.setString(4, cliente.getRg());
+                                
+                ConnectionBD.runPreparedStatment(stm);
+
+                } catch (NumberFormatException e) {
+                System.out.println("Erro ao cadastrar usuario" + e);
+        }finally{ 
+                ConnectionBD.Desconectar();
+        }
+    }
     
+    public ResultSet SelecionarTudo(){
+        
+        ConnectionBD.Conectar();
     
+        result = ConnectionBD.SelectQuery("select * from cliente;");
+        
+        ConnectionBD.Desconectar();
+        
+        return result;
+    }
+    
+ 
 }

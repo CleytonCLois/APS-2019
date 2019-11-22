@@ -147,6 +147,12 @@ public class Agenda extends javax.swing.JFrame {
         TxtHorario.setForeground(new java.awt.Color(255, 255, 255));
         TxtHorario.setText("Horário:");
         getContentPane().add(TxtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, -1, -1));
+
+        InputHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputHorarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 390, 30));
 
         TxtData.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,9 +198,15 @@ public class Agenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SelectClienteActionPerformed
 
+<<<<<<< HEAD
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
         this.controller.deletar();
     }//GEN-LAST:event_Button1ActionPerformed
+=======
+    private void InputHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputHorarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputHorarioActionPerformed
+>>>>>>> 5c27a185c8dec6fa14ee51d788aee0e45ad0c35f
 
     /**
      * @param args the command line arguments

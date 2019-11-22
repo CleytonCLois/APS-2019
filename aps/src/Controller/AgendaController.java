@@ -13,6 +13,7 @@ import Model.DAO.ClienteDAO;
 import Model.DAO.TipoDAO;
 import Model.Tipo;
 import View.Agenda;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -53,7 +54,12 @@ public class AgendaController {
     
     public void agendar(){
         Agendamento agendamento = helper.retornaUsuario();
-        new AgendamentoDAO().insert(agendamento);
+        try {
+            System.out.println("Agendamento" + agendamento);
+            new AgendamentoDAO().AgendarQuadra(agendamento);
+        } catch (SQLException | NumberFormatException e) {
+             System.out.println("Erro ao realizar transferencia" + e);
+        }
         atualizarTabela();
         helper.limparTela();
     }

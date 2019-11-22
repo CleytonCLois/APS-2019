@@ -14,6 +14,7 @@ import java.util.Date;
  */
 
 public class Cliente extends Pessoa{
+    private int id;
     private String endereco;
     private String Cep;
 
@@ -23,8 +24,8 @@ public class Cliente extends Pessoa{
         this.Cep = Cep;
     }    
 
-    public Cliente (int id, String nome, char sexo, String dataNascimento, String email, String Rg,  String senha) {
-        super(id, nome, sexo, dataNascimento, email, Rg);
+    public Cliente (int id, String nome,String dataNascimento, String email, String Rg,  String senha) {
+        super(id, nome, dataNascimento, email, Rg);
         this.endereco = endereco;
         this.Cep = Cep;
     }

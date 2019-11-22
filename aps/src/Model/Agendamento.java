@@ -19,20 +19,37 @@ public class Agendamento {
     private int id;
     private Cliente cliente;
     private Tipo tipoQuadra;
-    private float valor;
-    private Date data;
     private String observacao;
+   
+    private int id_quadra;
+    private String nome_cliente;
+    private String nome_quadra;
+    private float valor;
+    private String data;
+    private String hora;
 
+    public Agendamento(int id_quadra, String nome_cliente, String nome_quadra, float valor, String data, String horario) {
+        this.id_quadra = id_quadra;
+        this.nome_cliente = nome_cliente;
+        this.nome_quadra = nome_quadra;
+        this.valor = valor;
+        this.data = data;
+        this.hora = hora;
+    }
+    
     public Agendamento(Cliente cliente, Tipo tipoQuadra, float valor, String data) {
         this.id = id;
         this.cliente = cliente;
         this.tipoQuadra = tipoQuadra;
         this.valor = valor;
-        try {
-            this.data = new SimpleDateFormat("dd/mm/yyyy HH:mm").parse(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(Agendamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.data = data;
+    }
+    
+    public Agendamento (int id_cliente, int id_quadra, String data, String hora){
+        this.id = id;
+        this.id_quadra = id_quadra;
+        this.data = data;
+        this.hora = hora;
     }
 
     public Agendamento(Cliente cliente, Tipo tipoQuadra, float valor, String data, String observacao) {
@@ -57,11 +74,11 @@ public class Agendamento {
     }
 
     public Tipo getTipo() {
-        return tipoQuadra;
+        return getTipoQuadra();
     }
 
     public void setTipo(Tipo tipoQuadra) {
-        this.tipoQuadra = tipoQuadra;
+        this.setTipoQuadra(tipoQuadra);
     }
 
     public float getValor() {
@@ -72,19 +89,19 @@ public class Agendamento {
         this.valor = valor;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
     
     public String getDataFormatada(){
-        return new SimpleDateFormat("dd/MM/yyyy").format(data);
+        return getData();
     }
     
     public String getHoraFormatada(){
-        return new SimpleDateFormat("HH:mm").format(data);
+        return getData();
     }    
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -98,5 +115,75 @@ public class Agendamento {
 
     public void SetVisible(boolean b) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * @return the tipoQuadra
+     */
+    public Tipo getTipoQuadra() {
+        return tipoQuadra;
+    }
+
+    /**
+     * @param tipoQuadra the tipoQuadra to set
+     */
+    public void setTipoQuadra(Tipo tipoQuadra) {
+        this.tipoQuadra = tipoQuadra;
+    }
+
+    /**
+     * @return the id_quadra
+     */
+    public int getId_quadra() {
+        return id_quadra;
+    }
+
+    /**
+     * @param id_quadra the id_quadra to set
+     */
+    public void setId_quadra(int id_quadra) {
+        this.id_quadra = id_quadra;
+    }
+
+    /**
+     * @return the hora
+     */
+    public String getHora() {
+        return hora;
+    }
+
+    /**
+     * @param hora the hora to set
+     */
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    /**
+     * @return the nome_cliente
+     */
+    public String getNome_cliente() {
+        return nome_cliente;
+    }
+
+    /**
+     * @param nome_cliente the nome_cliente to set
+     */
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
+    }
+
+    /**
+     * @return the nome_quadra
+     */
+    public String getNome_quadra() {
+        return nome_quadra;
+    }
+
+    /**
+     * @param nome_quadra the nome_quadra to set
+     */
+    public void setNome_quadra(String nome_quadra) {
+        this.nome_quadra = nome_quadra;
     }
 }

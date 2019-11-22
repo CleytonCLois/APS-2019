@@ -7,10 +7,15 @@ package Controller.Helper;
 
 import Model.Agendamento;
 import Model.Cliente;
+import Model.DAO.ConnectionBD;
 import Model.Tipo;
 import View.Agenda;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,27 +25,67 @@ import javax.swing.table.DefaultTableModel;
 public class AgendaHelper implements IHelper {
     
     private final Agenda view;
+    private ResultSet result;
 
     public AgendaHelper(Agenda view) {
         this.view = view;
+    }
+    
+    public String getNameClient(Integer id_cliente){
+         
+        ConnectionBD.Conectar();
+        String cliente = "";
+        try {
+            result = ConnectionBD.SelectQuery("select * from cliente;");
+            while ( result.next() ) {
+                if ( result.getInt("cod_cliente") == id_cliente ) {
+                   cliente = result.getString("nome");
+                }
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Erro ao realizar transferencia" + e);
+        }
+        
+        ConnectionBD.Desconectar();
+        
+        return cliente;
+    }
+    
+    public Integer getIdClient(Cliente cliente){
+        ConnectionBD.Conectar();
+//        System.out.println("CLiente..." + cliente + cliente.getNome());
+        Integer id_cliente = 0;
+        try {
+            result = ConnectionBD.SelectQuery("select * from cliente;");
+            while ( result.next() ) {
+                if ( result.getString("nome") == "Vitor" ) {
+                   id_cliente = result.getInt("cod_cliente");
+                }
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Erro ao realizar transferencia" + e);
+        }
+        
+        ConnectionBD.Desconectar();
+        
+        return id_cliente;   
     }
 
     public void popularTabela(ArrayList<Agendamento> listaDeAgendamentos) {
         
         DefaultTableModel tableModel = (DefaultTableModel) view.getTabela().getModel();
         tableModel.setNumRows(0);
-        // zerando a tabela pra percorrer ela toda preenchendo/populando ela
-        
+
         for (Agendamento listaDeAgendamento : listaDeAgendamentos) {
             tableModel.addRow(
                     new Object[]{
-                        listaDeAgendamento.getId(),
-                        listaDeAgendamento.getCliente().getNome(),
-                        listaDeAgendamento.getTipo().getDescricao(),
+                        listaDeAgendamento.getId_quadra(),  
+                        listaDeAgendamento.getNome_cliente(),
+                        listaDeAgendamento.getNome_quadra(),
                         listaDeAgendamento.getValor(),
-                        listaDeAgendamento.getDataFormatada(),
-                        listaDeAgendamento.getHoraFormatada(),
-                        listaDeAgendamento.getObservacao(),
+                        listaDeAgendamento.getData(),
+                        listaDeAgendamento.getHora(),
+//                        listaDeAgendamento.getObservacao(),
                     }
             );
         }
@@ -49,7 +94,7 @@ public class AgendaHelper implements IHelper {
 
     public void preencherClientes(ArrayList<Cliente> buscaClientes) {
         DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getSelectCliente().getModel();
-        
+ 
         for (Cliente buscaCliente : buscaClientes) { // adicionando objeto cliente no combobox
             comboBoxModel.addElement(buscaCliente);
         }
@@ -79,10 +124,21 @@ public class AgendaHelper implements IHelper {
         float valor = Float.parseFloat(valorString);
         String data = view.getInputData().getText();
         String hora = view.getInputHorario().getText();
-        String dataHora = (data + " " + hora);
-        String observacao = view.getInputObservacao().getText();
         
-        Agendamento agendamento = new Agendamento(cliente, tipo, valor, dataHora, observacao);
+        Integer count = 1;
+        String sql = "insert into agendamento (cod_quadra, nome_cliente, nome_quadra, valor_quadra, dt_agendamento, horario_agendamento ) values(?,?,?,?,?,?)";
+        ConnectionBD.Conectar();
+        PreparedStatement stm = ConnectionBD.preparedStament(sql);
+        try {
+            result = ConnectionBD.SelectQuery("select * from agendamento;");
+            while ( result.next() ) {
+                count = count + 1;
+            }
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Erro ao coletar agendamento" + e);
+        }
+
+        Agendamento agendamento = new Agendamento(count, cliente.getNome(), tipo.getDescricao(), valor, data, hora);
         return agendamento;
     }
 

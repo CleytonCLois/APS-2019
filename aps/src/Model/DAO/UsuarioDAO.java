@@ -6,6 +6,7 @@
 package Model.DAO;
 
 import Model.Usuario;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @author tiago
  */
 public class UsuarioDAO {
-    
+     ResultSet rs = null; 
     /**
      * Insere um usuario dentro do banco de dados
      * @param usuario exige que seja passado um objeto do tipo usuario
@@ -96,6 +97,16 @@ public class UsuarioDAO {
         return usuario.getId() ==  usuarioAComparar.getId();
     }
     
+     public ResultSet SelecionarTudo(){
+        
+        ConnectionBD.Conectar();
+    
+        rs = ConnectionBD.SelectQuery("select * from usuario;");
+        
+        ConnectionBD.Desconectar();
+        
+        return rs;
+    }
     
     
 }
