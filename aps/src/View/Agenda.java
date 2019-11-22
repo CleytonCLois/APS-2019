@@ -38,6 +38,8 @@ public class Agenda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        InputValor = new javax.swing.JTextField();
+        InputHorario = new javax.swing.JFormattedTextField();
         Button1 = new java.awt.Button();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
@@ -49,9 +51,7 @@ public class Agenda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         InputObservacao = new javax.swing.JTextArea();
         TxtHorario = new javax.swing.JLabel();
-        InputHorario = new javax.swing.JTextField();
         TxtData = new javax.swing.JLabel();
-        InputValor = new javax.swing.JTextField();
         TxtValor = new javax.swing.JLabel();
         TxtTipo = new javax.swing.JLabel();
         TxtCliente = new javax.swing.JLabel();
@@ -59,6 +59,14 @@ public class Agenda extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(InputValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 390, 30));
+
+        try {
+            InputHorario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 390, 30));
 
         Button1.setActionCommand("Deletar Locação");
         Button1.setBackground(new java.awt.Color(255, 0, 51));
@@ -129,6 +137,11 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(SelectCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 390, 30));
 
+        try {
+            InputData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         InputData.setToolTipText("");
         getContentPane().add(InputData, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 390, 30));
 
@@ -147,13 +160,11 @@ public class Agenda extends javax.swing.JFrame {
         TxtHorario.setForeground(new java.awt.Color(255, 255, 255));
         TxtHorario.setText("Horário:");
         getContentPane().add(TxtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 110, -1, -1));
-        getContentPane().add(InputHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 390, 30));
 
         TxtData.setBackground(new java.awt.Color(255, 255, 255));
         TxtData.setForeground(new java.awt.Color(255, 255, 255));
         TxtData.setText("Data:");
         getContentPane().add(TxtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, -1, -1));
-        getContentPane().add(InputValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 390, 30));
 
         TxtValor.setBackground(new java.awt.Color(255, 255, 255));
         TxtValor.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +250,7 @@ public class Agenda extends javax.swing.JFrame {
     private java.awt.Button Button1;
     private javax.swing.JLabel FundoSecundario;
     private javax.swing.JFormattedTextField InputData;
-    private javax.swing.JTextField InputHorario;
+    private javax.swing.JFormattedTextField InputHorario;
     private javax.swing.JTextArea InputObservacao;
     private javax.swing.JTextField InputValor;
     private javax.swing.JComboBox<String> SelectCliente;
@@ -289,7 +300,7 @@ public class Agenda extends javax.swing.JFrame {
         return InputHorario;
     }
 
-    public void setInputHorario(JTextField InputHorario) {
+    public void setInputHorario(JFormattedTextField InputHorario) {
         this.InputHorario = InputHorario;
     }
 
@@ -305,7 +316,7 @@ public class Agenda extends javax.swing.JFrame {
         return InputValor;
     }
 
-    public void setInputValor(JTextField InputValor) {
+    public void setInputValor(JFormattedTextField InputValor) {
         this.InputValor = InputValor;
     }
 

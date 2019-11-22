@@ -15,12 +15,11 @@ import java.util.logging.Logger;
  *
  * @author Dinopc
  */
-abstract public class Pessoa {
-    protected int id;
+ public class Pessoa {
+    public int id;
     protected String nome;
-    protected char sexo;
-    protected Date dataNascimento;
-    protected String telefone;
+    protected String sexo;
+    protected String dataNascimento;
     protected String email;
     protected String Rg;
 
@@ -30,24 +29,20 @@ abstract public class Pessoa {
     }
     public Pessoa(int id, String nome, String dataNascimento, String email, String Rg) {
         this.nome = nome;
-        try {
-            this.dataNascimento = new SimpleDateFormat("dd/mm/yyyy").parse(dataNascimento);
-        } catch (ParseException ex) {
-            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+            this.dataNascimento = dataNascimento;
+//            this.dataNascimento = new SimpleDateFormat("dd/mm/yyyy").parse(dataNascimento);
+
+
         this.email = email;
         this.Rg = Rg;
     }
     
-    public Pessoa(int id, String nome, char sexo, String dataNascimento, String email, String Rg) {
+    public Pessoa(int id, String nome, String sexo, String dataNascimento, String email, String Rg) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
-        try {
-            this.dataNascimento = new SimpleDateFormat("dd/mm/yyyy").parse(dataNascimento);
-        } catch (ParseException ex) {
-            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
-        }
+ this.dataNascimento = dataNascimento;
         this.email = email;
         this.Rg = Rg;
     }
@@ -68,33 +63,26 @@ abstract public class Pessoa {
         this.nome = nome;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
     public String getDataFormatada(){
-        return new SimpleDateFormat("dd/MM/yyyy").format(dataNascimento);
+        return this.dataNascimento;
     }
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
+   
     public String getEmail() {
         return email;
     }

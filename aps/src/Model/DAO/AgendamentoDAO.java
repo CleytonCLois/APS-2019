@@ -6,7 +6,13 @@
 package Model.DAO;
 
 import Model.Agendamento;
+import Model.Cliente;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import Model.DAO.AgendamentoDAO;
+import java.util.Scanner;
 
 /**
  *
@@ -14,16 +20,18 @@ import java.util.ArrayList;
  */
 public class AgendamentoDAO {
     
+    private Scanner s = new Scanner(System.in);
+    private ResultSet result;
+    
     /**
      * Insere um agendamento dentro do banco de dados
      * @param agendamento exige que seja passado um objeto do tipo agendamento
      */
     public void insert(Agendamento agendamento){
           
-        if(agendamento.getId() == 0){
-            agendamento.setId(proximoId());
+        
             Banco.agendamento.add(agendamento);
-        }
+            
     }
     
     /**
@@ -62,7 +70,10 @@ public class AgendamentoDAO {
      * @return uma lista com todos os registros do banco
      */
     public ArrayList<Agendamento> selectAll(){
+        System.out.println("LISTA AGENDAMENTO" + Banco.agendamento);
+        Banco.inicia();
         return Banco.agendamento;
+        
     }
     
     /**
@@ -88,4 +99,48 @@ public class AgendamentoDAO {
         }
         return maiorId + 1;
     }
+    
+    public void AgendarQuadra(Agendamento agend) throws SQLException{
+      Integer count = 1;
+      String sql = "insert into agendamento (cod_quadra, nome_cliente, nome_quadra, valor_quadra, dt_agendamento, horario_agendamento ) values(?,?,?,?,?,?)";
+        try {
+            ConnectionBD.Conectar();
+            PreparedStatement stm = ConnectionBD.preparedStament(sql);
+            try {
+                result = ConnectionBD.SelectQuery("select * from agendamento;");
+                while ( result.next() ) {
+                    count = count + 1;
+                }
+            } catch (SQLException | NumberFormatException e) {
+                System.out.println("Erro ao coletar agendamento" + e);
+            }
+
+            stm.setInt(1, count);
+            stm.setString(2, agend.getNome_cliente());
+            stm.setString(3, agend.getNome_quadra());
+            stm.setFloat(4, agend.getValor());
+            stm.setString(5, agend.getData());
+            stm.setString(6, agend.getHora());
+
+            ConnectionBD.runPreparedStatment(stm);
+
+            } catch (NumberFormatException e) {
+            System.out.println("Erro ao cadastrar um agendamento" + e);
+        }finally{ 
+            ConnectionBD.Desconectar();
+        }
+    }
+    
+    public ResultSet SelecionarTudo(){
+        
+        ConnectionBD.Conectar();
+    
+        result = ConnectionBD.SelectQuery("select * from agendamento;");
+        
+        ConnectionBD.Desconectar();
+        
+        return result;
+    }
+    
+    
 }
