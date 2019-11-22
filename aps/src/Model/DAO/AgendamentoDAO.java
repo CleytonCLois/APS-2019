@@ -28,10 +28,7 @@ public class AgendamentoDAO {
      * @param agendamento exige que seja passado um objeto do tipo agendamento
      */
     public void insert(Agendamento agendamento){
-          
-        
-            Banco.agendamento.add(agendamento);
-            
+        Banco.agendamento.add(agendamento);
     }
     
     /**
@@ -130,6 +127,26 @@ public class AgendamentoDAO {
             ConnectionBD.Desconectar();
         }
     }
+    
+    public void excluirAgendamento (Agendamento agend) throws SQLException{
+         
+         String sql = "delete from agendamento where nome = ?";
+         
+         try {
+            ConnectionBD.Conectar();
+            PreparedStatement stm = ConnectionBD.preparedStament(sql);
+
+            stm.setString(1, agend.getNome_cliente());
+
+            ConnectionBD.runPreparedStatment(stm);
+                
+        }catch (NumberFormatException e) {
+            System.out.println("Erro ao excluir agendamento" + e);
+                
+        }finally{ 
+            ConnectionBD.Desconectar();
+        }
+     }
     
     public ResultSet SelecionarTudo(){
         

@@ -82,23 +82,43 @@ public class ClienteDAO {
        
       String sql = "insert into cliente (nome, dt_nascimento, email_cliente,rg_cliente) values(?,?,?,?)";
         try {
-                ConnectionBD.Conectar();
-                PreparedStatement stm = ConnectionBD.preparedStament(sql);
-                
+            ConnectionBD.Conectar();
+            PreparedStatement stm = ConnectionBD.preparedStament(sql);
 
-                stm.setString(1, cliente.getNome());
-                stm.setString(2, cliente.getDataNascimento());
-                stm.setString(3, cliente.getEmail());
-                stm.setString(4, cliente.getRg());
-                                
-                ConnectionBD.runPreparedStatment(stm);
 
-                } catch (NumberFormatException e) {
-                System.out.println("Erro ao cadastrar usuario" + e);
+            stm.setString(1, cliente.getNome());
+            stm.setString(2, cliente.getDataNascimento());
+            stm.setString(3, cliente.getEmail());
+            stm.setString(4, cliente.getRg());
+
+            ConnectionBD.runPreparedStatment(stm);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Erro ao cadastrar usuario" + e);
         }finally{ 
-                ConnectionBD.Desconectar();
+            ConnectionBD.Desconectar();
         }
     }
+     
+     public void excluirCliente (Cliente cliente) throws SQLException{
+         
+         String sql = "delete from cliente where nome = ?";
+         
+         try {
+            ConnectionBD.Conectar();
+            PreparedStatement stm = ConnectionBD.preparedStament(sql);
+
+            stm.setString(1, cliente.getNome());
+
+            ConnectionBD.runPreparedStatment(stm);
+                
+        }catch (NumberFormatException e) {
+            System.out.println("Erro ao excluir usuario" + e);
+                
+        }finally{ 
+            ConnectionBD.Desconectar();
+        }
+     }
     
     public ResultSet SelecionarTudo(){
         

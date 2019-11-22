@@ -31,46 +31,6 @@ public class AgendaHelper implements IHelper {
         this.view = view;
     }
     
-    public String getNameClient(Integer id_cliente){
-         
-        ConnectionBD.Conectar();
-        String cliente = "";
-        try {
-            result = ConnectionBD.SelectQuery("select * from cliente;");
-            while ( result.next() ) {
-                if ( result.getInt("cod_cliente") == id_cliente ) {
-                   cliente = result.getString("nome");
-                }
-            }
-        } catch (SQLException | NumberFormatException e) {
-            System.out.println("Erro ao realizar transferencia" + e);
-        }
-        
-        ConnectionBD.Desconectar();
-        
-        return cliente;
-    }
-    
-    public Integer getIdClient(Cliente cliente){
-        ConnectionBD.Conectar();
-//        System.out.println("CLiente..." + cliente + cliente.getNome());
-        Integer id_cliente = 0;
-        try {
-            result = ConnectionBD.SelectQuery("select * from cliente;");
-            while ( result.next() ) {
-                if ( result.getString("nome") == "Vitor" ) {
-                   id_cliente = result.getInt("cod_cliente");
-                }
-            }
-        } catch (SQLException | NumberFormatException e) {
-            System.out.println("Erro ao realizar transferencia" + e);
-        }
-        
-        ConnectionBD.Desconectar();
-        
-        return id_cliente;   
-    }
-
     public void popularTabela(ArrayList<Agendamento> listaDeAgendamentos) {
         
         DefaultTableModel tableModel = (DefaultTableModel) view.getTabela().getModel();
@@ -137,7 +97,7 @@ public class AgendaHelper implements IHelper {
         } catch (SQLException | NumberFormatException e) {
             System.out.println("Erro ao coletar agendamento" + e);
         }
-
+        System.out.println("TIPO>>>" + tipo.getDescricao() + tipo);
         Agendamento agendamento = new Agendamento(count, cliente.getNome(), tipo.getDescricao(), valor, data, hora);
         return agendamento;
     }

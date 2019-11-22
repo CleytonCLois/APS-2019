@@ -55,7 +55,7 @@ public class AgendaController {
     public void agendar(){
         Agendamento agendamento = helper.retornaUsuario();
         try {
-            System.out.println("Agendamento" + agendamento);
+            System.out.println("Agendamento" + helper.retornaUsuario());
             new AgendamentoDAO().AgendarQuadra(agendamento);
         } catch (SQLException | NumberFormatException e) {
              System.out.println("Erro ao realizar transferencia" + e);
